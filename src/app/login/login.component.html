@@ -1,4 +1,7 @@
 <div class="signin-content">
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
     <mat-card>
       <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
