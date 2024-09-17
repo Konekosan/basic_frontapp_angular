@@ -1,0 +1,23 @@
+<mat-drawer-container>
+    <mat-drawer opened="true" mode="side">
+    <mat-nav-list>
+        <mat-list-item>
+            <button routerLink="" mat-button>Home</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button routerLink="login" mat-button>Connexion</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button routerLink="card" mat-button>CRUD</button>
+        </mat-list-item>
+        <mat-list-item>
+            <button routerLink="" mat-button>Observable</button>
+        </mat-list-item>
+    </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <div style="text-align: center;min-height: 600px;">
+            <router-outlet></router-outlet>
+            </div>
+    </mat-drawer-content>
+</mat-drawer-container>
