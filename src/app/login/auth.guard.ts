@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     if (this.loginService.isAuthenticated()) {
       return true;
     } else {
-      this.messageService.setMessage('Vous devez être connecté pour accéder au Dashboard.');
+      this.messageService.setMessage('Vous devez être connecté pour accéder à cette page.');
       this.router.navigate(['/login']);
       return false;
     }

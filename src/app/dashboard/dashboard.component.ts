@@ -12,7 +12,8 @@ import { MaterialModule } from '../_module/Material.module';
 })
 export class DashboardComponent {
 
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router) {
+  }
 
   logout() {
     this.loginService.logout();

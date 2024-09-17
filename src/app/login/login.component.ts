@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit{
   });
   username: string = '';
   password: string = '';
-  errorMessage: string = 't moche';
+  errorMessage: string = '';
 
   constructor(private loginService: LoginService, 
               private router:Router,
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit{
       console.log('Connexion réussie');
       this.router.navigate(['/dashboard']);
     } else {
-      console.error('Nom d\'utilisateur ou mot de passe incorrect');
+      this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect';
     }
   }
 
