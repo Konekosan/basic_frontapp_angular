@@ -3,8 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './login/auth.guard';
-import { CrudComponent } from './crud/crud.component';
 import { ObservableComponent } from './observable/observable.component';
+import { UsagerComponent } from './usager/usager.component';
 
 export const routes: Routes = [
     {   path: '',
@@ -20,11 +20,11 @@ export const routes: Routes = [
         canActivate: [AuthGuard]
     },
     {
-        path: 'crud',
-        component: CrudComponent
-    },
-    {
         path: 'observable',
         component: ObservableComponent
+    },
+    {
+        path: 'usager',
+        component: UsagerComponent
     }
 ];

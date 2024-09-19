@@ -20,17 +20,17 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(){
-    if(this.loginService.isAuthenticated()){
-      this.isLogged = true;
-    }
+    // if(this.loginService.isAuthenticated()){
+    //   this.isLogged = true;
+    // }
   }
 
   routes = [
     { label: 'Home', path: '' },
     //{ label: 'Connexion', path: 'login' },
     { label: 'Dashboard', path: 'dashboard' },
-    { label: 'CRUD', path: 'crud' },
-    { label: 'Observable', path: 'observable' }
+    { label: 'Observable', path: 'observable' },
+    { label: 'Usager', path: 'usager' }
   ];
 
 }

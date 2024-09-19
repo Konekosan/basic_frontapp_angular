@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-header>
+        <h2>Usager</h2>
+        <button mat-button class="add-modale-button">Ajouter</button>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table matSort [dataSource]="usagerData">
+            <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsUsager">
+                <th mat-sort-header *matHeaderCellDef>{{column}}</th>
+                <td mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="column !== 'actions'; else actionsColumn">
+                        {{element[column]}}
+                    </ng-container>
+                    <ng-template #actionsColumn>
+                        <button mat-icon-button>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </ng-template>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="columnsUsager" style="background-color:darkgray ;"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsUsager; "></tr>
+        </table>
+    </mat-card-content>
+    <mat-card-footer>
+        <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons>
+        </mat-paginator>
+    </mat-card-footer>
+</mat-card>
