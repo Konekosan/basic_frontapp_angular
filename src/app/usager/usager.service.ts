@@ -20,4 +20,8 @@ export class UsagerService {
     return this.http.get(this.usagersUrl)
   }
 
+  addUsager(data: any) {
+    return this.http.post<any>(this.createUsager, data, { headers: this.header_node });
+  }
+
 }

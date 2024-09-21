@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-header>
         <h2>Usager</h2>
-        <button mat-button class="add-modale-button">Ajouter</button>
+        <button mat-button (click)="addUsagerModale()" class="add-modale-button">Ajouter</button>
     </mat-card-header>
     <mat-card-content>
         <table mat-table matSort [dataSource]="usagerData">

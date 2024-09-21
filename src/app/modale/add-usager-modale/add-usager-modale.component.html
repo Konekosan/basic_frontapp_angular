@@ -1,0 +1,57 @@
+<h2 mat-dialog-title>Ajouter un Usager</h2>
+<mat-dialog-content [formGroup]="usagerForm">
+  <p>Nom</p>
+  <mat-form-field>
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="nom"/>
+    <mat-error *ngIf="usagerForm.get('nom')?.invalid && usagerForm.get('nom')?.touched">
+      Le nom est requis
+    </mat-error>
+  </mat-form-field>
+  <p>Prenom</p>
+  <mat-form-field>
+    <mat-label>Prenom</mat-label>
+    <input matInput formControlName="prenom"/>
+    <mat-error *ngIf="usagerForm.get('prenom')?.invalid && usagerForm.get('prenom')?.touched">
+      Le prénom est requis
+    </mat-error>
+  </mat-form-field>
+  <p>Age</p>
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput formControlName="age"/>
+    <mat-error *ngIf="usagerForm.get('age')?.invalid && usagerForm.get('age')?.touched">
+      L'age est requis
+    </mat-error>
+  </mat-form-field>
+  <p>Identifiant</p>
+  <mat-form-field>
+    <mat-label>Identifiant</mat-label>
+    <input matInput formControlName="username"/>
+    <mat-error *ngIf="usagerForm.get('username')?.invalid && usagerForm.get('username')?.touched">
+      L'identifiant est requis
+    </mat-error>
+  </mat-form-field>
+  <p>Mot de passe</p>
+  <mat-form-field>
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password"type="password" formControlName="hashed_pwd"/>
+    <mat-error *ngIf="usagerForm.get('hashed_pwd')?.invalid && usagerForm.get('hashed_pwd')?.touched">
+      Le mot de passe est requis
+    </mat-error>
+  </mat-form-field>
+  <p>Confirmation de mot de passe</p>
+  <mat-form-field>
+    <mat-label>Mot de passe</mat-label>
+    <input matInput type="password" formControlName="confirmPassword"/>
+  </mat-form-field>
+  <p *ngIf="showErrorMatchPassword" style="color: red;">
+    Le formulaire est invalide ou les mots de passe ne correspondent pas.
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="submit()" cdkFocusInitial>Valider</button>
+  <button mat-button (click)="closeModale()">
+    Annuler
+  </button>
+</mat-dialog-actions>
