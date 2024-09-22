@@ -19,12 +19,13 @@ import { MessageService } from '../_service/message.service';
 })
 export class LoginComponent implements OnInit{
   form: FormGroup = new FormGroup({
-    userName: new FormControl('', []),
+    username: new FormControl('', []),
     password: new FormControl('', [Validators.required, Validators.minLength(5)])
   });
   username: string = '';
   password: string = '';
   errorMessage: string = '';
+  token: string | null = null;
 
   constructor(private loginService: LoginService, 
               private router:Router,
@@ -35,15 +36,19 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
-    if (this.loginService.login(this.form.value.userName,this.form.value.password)) {
-      console.log('Connexion réussie');
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect';
-    }
+    const loginForm = this.form.value;
+    this.loginService.login(loginForm.username, loginForm.password).subscribe(
+      response => {
+        this.token = response.access_token;
+        console.log('Login Sucessful', response);
+    },
+    error => {
+      console.log('Login failed', error);
+    });
   }
 
   isFieldInvalid(param: string) {
     return null;
   }
+  
 }

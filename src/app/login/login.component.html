@@ -7,7 +7,7 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <p>Entrez les informations pour vous connecter</p>
           <mat-form-field class="full-width-input">
-            <input matInput placeholder="Identifiant" formControlName="userName" required>
+            <input matInput placeholder="Identifiant" formControlName="username" required>
             <mat-error *ngIf="isFieldInvalid('userName')">
               Entrez les informations pour vous connecter
             </mat-error>
