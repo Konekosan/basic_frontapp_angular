@@ -1,6 +1,6 @@
 <div class="margin-main"></div>
 <div class="dashboard-container">
-    <h1>Bienvenue sur votre Dashboard</h1>
+    <h1 *ngIf="usager">Bienvenue sur votre Dashboard {{usager.nom}} {{ usager.prenom}}</h1>
     <p>Vous êtes maintenant connecté.</p>
     <button mat-button (click)="logout()">Se déconnecter</button>
 </div>

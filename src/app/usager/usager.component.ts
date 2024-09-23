@@ -1,5 +1,5 @@
 import { Component, OnInit, inject, model } from '@angular/core';
-import { UsagerService } from './usager.service';
+import { UsagerService } from '../_service/usager.service';
 import { MaterialModule } from '../_module/Material.module';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';

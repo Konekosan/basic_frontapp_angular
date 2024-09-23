@@ -6,9 +6,14 @@ export const authInterceptor: HttpInterceptorFn = (
   request: HttpRequest<any>, 
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
-  const token = localStorage.getItem('token');
-  console.log('aaa');
-  if (token) {
+  const token = '';
+
+  if (typeof window !== 'undefined' && window.localStorage) {
+    const token = localStorage.getItem('token');
+  }
+
+  if (token != '') {
+    console.log(token);
     request = request.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`

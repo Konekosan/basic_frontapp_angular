@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { switchMap, tap, map } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { response } from 'express';
 
 @Injectable({
   providedIn: 'root'
@@ -22,17 +23,13 @@ export class LoginService {
   private userInfoSource = new BehaviorSubject<any>(null);
   currentUserInfo = this.userInfoSource.asObservable();
 
-  constructor(private httpClient: HttpClient,
-              private router: Router) {
-
+  constructor(private httpClient: HttpClient) {
     if (typeof window !== 'undefined' && window.localStorage) {
       this.token = localStorage.getItem('authToken');
-      console.log(this.token);
       if (this.token) {
         this.getCurrentUser(this.token).subscribe();
       }
     }
-    
   }
 
   login(username: string, password: string){
@@ -47,17 +44,24 @@ export class LoginService {
 
     return this.httpClient.post<any>(this.urlLogin, dataLogin.toString(), { headers: this.headers })
     .pipe(tap(response => {
-      this.setToken(response.access_token);
-      this.getCurrentUser(response.access_token).subscribe(currentUser => {
-        console.log(currentUser);
-        this.userInfoSource.next(currentUser);
-      });
-      this.userInfoSource.next(response);
-    }));
+        this.setToken(response.access_token);
+      }),
+      switchMap(response =>
+        this.getCurrentUser(response.access_token).pipe(
+          tap(currentUser => {
+            this.userInfoSource.next(currentUser);
+          }),
+          map(currentUser => ({ token: response.access_token, user: currentUser }))
+        )
+      )
+    );
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('authToken');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return !!localStorage.getItem('authToken');
+    }
+    return false;
   }
 
   getCurrentUser(token: string): Observable<any> {
@@ -70,15 +74,15 @@ export class LoginService {
   }
 
   private setToken(token: string): void {
-    localStorage.setItem('authToken', token);
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('authToken', token);
+    }
   }
 
   logout() {
-    localStorage.removeItem('user');
-  }
-
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('user');
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.removeItem('authToken');
+    }
   }
 
 }

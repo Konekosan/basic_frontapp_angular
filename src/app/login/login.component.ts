@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
   token: string | null = null;
 
   constructor(private loginService: LoginService, 
-              private router:Router,
+              private router: Router,
               private messageService: MessageService) {}
 
   ngOnInit() {
@@ -39,8 +39,9 @@ export class LoginComponent implements OnInit{
     const loginForm = this.form.value;
     this.loginService.login(loginForm.username, loginForm.password).subscribe(
       response => {
-        this.token = response.access_token;
-        console.log('Login Sucessful', response);
+        this.token = response.token;
+        const currentUser = response.user;
+        this.router.navigate(['/dashboard', currentUser.id]);
     },
     error => {
       console.log('Login failed', error);

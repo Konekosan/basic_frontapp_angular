@@ -24,4 +24,8 @@ export class UsagerService {
     return this.http.post<any>(this.createUsager, data, { headers: this.header_node });
   }
 
+  fetchUsagerById(id: string) {
+    return this.http.get(this.usagersUrl + id);
+  }
+
 }

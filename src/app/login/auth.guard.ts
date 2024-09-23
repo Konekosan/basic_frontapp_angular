@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
               private messageService: MessageService) {}
 
   canActivate(): boolean {
-    if (this.loginService.isAuthenticated()) {
+    if (this.loginService.isLoggedIn()) {
       return true;
     } else {
       this.messageService.setMessage('Vous devez être connecté pour accéder à cette page.');
