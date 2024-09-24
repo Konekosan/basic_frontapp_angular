@@ -4,6 +4,7 @@ import { MaterialModule } from '../_module/Material.module';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddUsagerModaleComponent } from '../modale/add-usager-modale/add-usager-modale.component';
+import { ConfirmationModaleComponent } from '../modale/confirmation-modale/confirmation-modale.component';
 
 @Component({
   selector: 'app-usager',
@@ -55,20 +56,20 @@ export class UsagerComponent implements OnInit {
   }
 
   deleteBoard(event: any) {
-    const boardId = event.id;
-    // const dialogRef = this.dialog.open(ConfirmationComponent, {
-    //   data: 'delete'
-    //   });
+    const usagerId = event.id;
+    const dialogRef = this.dialog.open(ConfirmationModaleComponent, {
+      data: 'delete'
+    });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result !== undefined) {
-    //     this.boardService.deleteBoardById(boardId).subscribe(
-    //       response => {
-    //         console.log(response);
-    //       }
-    //     );        
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        this.usagerService.deleteUsagerById(usagerId).subscribe(
+        response => {
+          console.log(response);
+          this.usagerData = this.usagerData.filter((usager: any) => usager.id !== usagerId);
+        });
+      }
+    });
   }
 
   editBoard(event: any){

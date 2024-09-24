@@ -32,7 +32,8 @@ export class SidebarComponent implements OnInit{
   routes = [
     { label: 'Home', path: '' },
     { label: 'Observable', path: 'observable' },
-    { label: 'Usager', path: 'usager' }
+    { label: 'Usager', path: 'usager' },
+    { label: 'Poo training', path: 'poo'}
   ];
 
 }

@@ -49,8 +49,7 @@ export class AddUsagerModaleComponent implements OnInit{
     console.log(this.datas);
     this.usagerService.addUsager(this.datas).subscribe(
       response => {
-        console.log(response);
-        this.dialogRef.close(this.usagerForm.value);
+        this.dialogRef.close(response[0]);
       },
       error => {
         console.log(error);

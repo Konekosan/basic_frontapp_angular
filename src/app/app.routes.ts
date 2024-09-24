@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './login/auth.guard';
 import { ObservableComponent } from './observable/observable.component';
 import { UsagerComponent } from './usager/usager.component';
+import { PooComponent } from './POO/poo/poo.component';
 
 export const routes: Routes = [
     {   path: '',
@@ -26,5 +27,9 @@ export const routes: Routes = [
     {
         path: 'usager',
         component: UsagerComponent
+    },
+    {
+        path: 'poo',
+        component: PooComponent
     }
 ];

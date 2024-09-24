@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +28,8 @@ export class UsagerService {
     return this.http.get(this.usagersUrl + id);
   }
 
-  deleteUsagerById(id: string): void {
-    this.http.delete(this.usagersUrl + id);
+  deleteUsagerById(id: string): Observable<any> {
+    return this.http.delete(this.usagersUrl + id);
   }
 
 }
