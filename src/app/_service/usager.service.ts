@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import { AddUsagerForm, Usager } from '../_model/usager.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +17,20 @@ export class UsagerService {
 
   constructor(private http: HttpClient) { }
 
-  fetchAllUsager() {
-    return this.http.get(this.usagersUrl)
+  fetchAllUsager(): Observable<Usager[]> {
+    return this.http.get<Usager[]>(this.usagersUrl)
   }
 
-  addUsager(data: any) {
-    return this.http.post<any>(this.createUsager, data, { headers: this.header_node });
+  addUsager(data: AddUsagerForm): Observable<Usager[]> {
+    return this.http.post<Usager[]>(this.createUsager, data, { headers: this.header_node });
   }
 
-  fetchUsagerById(id: string) {
-    return this.http.get(this.usagersUrl + id);
+  fetchUsagerById(id: string): Observable<Usager[]> {
+    return this.http.get<Usager[]>(this.usagersUrl + id);
   }
 
-  deleteUsagerById(id: string): Observable<any> {
-    return this.http.delete(this.usagersUrl + id);
+  deleteUsagerById(id: string): Observable<string> {
+    return this.http.delete<string>(this.usagersUrl + id);
   }
 
 }

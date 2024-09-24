@@ -6,4 +6,29 @@ export class Usager {
     username: string;
     hashed_pwd: string;
     is_active: boolean;
+
+    constructor(){}
+
+    public isMajor(): boolean {
+        return true;
+    }
+}
+
+export interface UsagerEvent {
+    id: string;
+}
+
+export interface UsagerResponse {
+    usagers: Usager[];
+    status: number;
+  }
+
+export interface AddUsagerForm {
+    parameter: {
+        age: string,
+        hashed_pwd: string,
+        nom: string,
+        prenom: string,
+        username: string
+    }
 }

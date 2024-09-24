@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit{
     this.route.params.subscribe(params => {
       const userId = params['id'];
       this.usagerService.fetchUsagerById(userId).subscribe(
-        (data: any) => {
+        (data: Usager[]) => {
           this.usager = data[0];
         }
       )

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule, Validators  } from '@angular/forms';
 import { UsagerService } from '../../_service/usager.service';
+import { AddUsagerForm } from '../../_model/usager.model';
 
 @Component({
   selector: 'app-add-usager-modale',
@@ -18,7 +19,6 @@ export class AddUsagerModaleComponent implements OnInit{
   readonly data = inject(MAT_DIALOG_DATA);
   showErrorMatchPassword: boolean = false;
   usagerForm: FormGroup;
-  datas = {};
 
   constructor(private fb: FormBuilder, private usagerService: UsagerService){
     this.usagerForm = this.fb.group({
@@ -31,23 +31,19 @@ export class AddUsagerModaleComponent implements OnInit{
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   submit(): void {
     if (this.usagerForm.invalid || !this.passwordsMatch()) {
       this.showErrorMatchPassword = true;
       return;
     }
-    
     const formData = { ...this.usagerForm.value };
     delete formData.confirmPassword;
 
-    this.datas = {
-      "parameter": formData
-    }
-    console.log(this.datas);
-    this.usagerService.addUsager(this.datas).subscribe(
+    const datas: AddUsagerForm = {parameter: formData};
+
+    this.usagerService.addUsager(datas).subscribe(
       response => {
         this.dialogRef.close(response[0]);
       },
@@ -58,7 +54,7 @@ export class AddUsagerModaleComponent implements OnInit{
     )
   }
 
-  closeModale() {
+  closeModale(): void {
     this.dialogRef.close();
   }
 

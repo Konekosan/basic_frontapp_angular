@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddUsagerModaleComponent } from '../modale/add-usager-modale/add-usager-modale.component';
 import { ConfirmationModaleComponent } from '../modale/confirmation-modale/confirmation-modale.component';
+import { UsagerEvent, Usager } from '../_model/usager.model';
 
 @Component({
   selector: 'app-usager',
@@ -15,7 +16,7 @@ import { ConfirmationModaleComponent } from '../modale/confirmation-modale/confi
 })
 export class UsagerComponent implements OnInit {
 
-  usagerData: any = [];
+  usagerData: Usager[] = [];
   columnsUsager: string[] = ['id', 'nom', 'prenom', 'age', 'username', 'actions'];
 
   readonly dialog = inject(MatDialog);
@@ -31,13 +32,13 @@ export class UsagerComponent implements OnInit {
     this.loadUsager();
   }
 
-  loadUsager() {
+  loadUsager(): void {
     this.usagerService.fetchAllUsager().subscribe((data: any) => {
       this.usagerData = data[0];
     });
   }
 
-  addUsagerModale() {
+  addUsagerModale(): void {
     const dialogRef = this.dialog.open(AddUsagerModaleComponent, {
       data: { nom: this.nom(), 
               prenom: this.prenom(),
@@ -50,12 +51,14 @@ export class UsagerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.usagerData.push(result);
-      this.usagerData = [...this.usagerData];
+      if (result) {
+        this.usagerData.push(result);
+        this.usagerData = [...this.usagerData];
+      }
     });
   }
 
-  deleteBoard(event: any) {
+  deleteBoard(event: UsagerEvent): void {
     const usagerId = event.id;
     const dialogRef = this.dialog.open(ConfirmationModaleComponent, {
       data: 'delete'
@@ -65,7 +68,6 @@ export class UsagerComponent implements OnInit {
       if (result !== undefined) {
         this.usagerService.deleteUsagerById(usagerId).subscribe(
         response => {
-          console.log(response);
           this.usagerData = this.usagerData.filter((usager: any) => usager.id !== usagerId);
         });
       }
