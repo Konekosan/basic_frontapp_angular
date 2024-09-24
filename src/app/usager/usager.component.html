@@ -12,10 +12,10 @@
                         {{element[column]}}
                     </ng-container>
                     <ng-template #actionsColumn>
-                        <button mat-icon-button>
-                            <mat-icon>edit</mat-icon>
+                        <button mat-icon-button (click)="editBoard(element)">
+                            <mat-icon >edit</mat-icon>
                         </button>
-                        <button mat-icon-button>
+                        <button mat-icon-button (click)="deleteBoard(element)">
                             <mat-icon>delete</mat-icon>
                         </button>
                     </ng-template>

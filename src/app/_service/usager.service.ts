@@ -28,4 +28,8 @@ export class UsagerService {
     return this.http.get(this.usagersUrl + id);
   }
 
+  deleteUsagerById(id: string): void {
+    this.http.delete(this.usagersUrl + id);
+  }
+
 }
