@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../_module/Material.module';
-import { AdminService } from '../_service/admin/admin.service';
-import { Role } from '../_model/role.model';
+import { MaterialModule } from '../../_module/Material.module';
+import { AdminService } from '../../_service/admin/admin.service';
+import { Role } from '../../_model/role.model';
 import { FormsModule } from '@angular/forms';
 
 @Component({

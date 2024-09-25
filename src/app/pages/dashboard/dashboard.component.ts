@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsagerService } from '../../_service/usager/usager.service';
 import { Usager } from '../../_model/usager.model';
 import { CommonModule } from '@angular/common';
-import { AppHeaderComponent } from '../../app-header/app-header.component';
+import { AppHeaderComponent } from '../app-header/app-header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Subscription } from 'rxjs';
 

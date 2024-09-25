@@ -5,8 +5,8 @@ import { AuthGuard } from './pages/login/auth.guard';
 import { ObservableComponent } from './pages/observable/observable.component';
 import { UsagerComponent } from './pages/usager/usager.component';
 import { PooComponent } from './pages/POO/poo/poo.component';
-import { AdminComponent } from './admin/admin.component';
-import { AppHeaderComponent } from './app-header/app-header.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { AppHeaderComponent } from './pages/app-header/app-header.component';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
 
 export const routes: Routes = [
