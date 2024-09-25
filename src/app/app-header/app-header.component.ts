@@ -20,10 +20,7 @@ export class AppHeaderComponent implements OnInit {
   usager: Usager;
 
   constructor(private loginService: LoginService, private router: Router,
-              private usagerService: UsagerService
-  ) {
-
-  }
+              private usagerService: UsagerService) {}
 
   ngOnInit(): void {
     this.usager = this.usagerService.getUserData();

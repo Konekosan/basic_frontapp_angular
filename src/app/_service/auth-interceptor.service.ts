@@ -21,12 +21,8 @@ export const authInterceptor: HttpInterceptorFn = (
   request: HttpRequest<any>, 
   next: HttpHandlerFn
 ): Observable<HttpEvent<any>> => {
-  const token = '';
+  const token = localStorage.getItem('authToken');
 
-  if (typeof window !== 'undefined' && window.localStorage) {
-    const token = localStorage.getItem('token');
-  }
-  //console.log('salut');
   if (token != '') {
     request = request.clone({
       setHeaders: {
@@ -34,7 +30,7 @@ export const authInterceptor: HttpInterceptorFn = (
       }
     });
   }
-  //handle401Error(request, next);
+  
   return next(request);
   // return next(request).pipe(
   //     catchError((error: HttpErrorResponse) => {
