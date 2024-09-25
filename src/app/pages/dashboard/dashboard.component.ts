@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { LoginService } from '../../login/login.service';
+import { LoginService } from '../../_service/login/login.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { MaterialModule } from '../../_module/Material.module';
 import { ActivatedRoute } from '@angular/router';
-import { UsagerService } from '../../_service/usager.service';
+import { UsagerService } from '../../_service/usager/usager.service';
 import { Usager } from '../../_model/usager.model';
 import { CommonModule } from '@angular/common';
 import { AppHeaderComponent } from '../../app-header/app-header.component';
-import { SidebarComponent } from '../../sidebar/sidebar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 import { Subscription } from 'rxjs';
 
 @Component({

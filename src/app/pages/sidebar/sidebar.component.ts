@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../_module/Material.module';
+import { MaterialModule } from '../../_module/Material.module';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginService } from '../login/login.service';
-import { Usager } from '../_model/usager.model';
+import { LoginService } from '../../_service/login/login.service';
+import { Usager } from '../../_model/usager.model';
 
 @Component({
   selector: 'app-sidebar',

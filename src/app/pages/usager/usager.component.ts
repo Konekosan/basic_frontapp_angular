@@ -1,11 +1,11 @@
 import { Component, OnInit, inject, model } from '@angular/core';
-import { UsagerService } from '../_service/usager.service';
-import { MaterialModule } from '../_module/Material.module';
+import { UsagerService } from '../../_service/usager/usager.service';
+import { MaterialModule } from '../../_module/Material.module';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { AddUsagerModaleComponent } from '../modale/add-usager-modale/add-usager-modale.component';
-import { ConfirmationModaleComponent } from '../modale/confirmation-modale/confirmation-modale.component';
-import { UsagerEvent, Usager } from '../_model/usager.model';
+import { AddUsagerModaleComponent } from '../../modale/add-usager-modale/add-usager-modale.component';
+import { ConfirmationModaleComponent } from '../../modale/confirmation-modale/confirmation-modale.component';
+import { UsagerEvent, Usager } from '../../_model/usager.model';
 
 @Component({
   selector: 'app-usager',

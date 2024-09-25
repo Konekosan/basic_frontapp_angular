@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ReactiveFormsModule, Validators  } from '@angular/forms';
-import { UsagerService } from '../../_service/usager.service';
+import { UsagerService } from '../../_service/usager/usager.service';
 import { AddUsagerForm } from '../../_model/usager.model';
 
 @Component({

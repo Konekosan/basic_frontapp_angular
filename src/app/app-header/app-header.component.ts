@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../_module/Material.module';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { LoginService } from '../login/login.service';
+import { SidebarComponent } from '../pages/sidebar/sidebar.component';
+import { LoginService } from '../_service/login/login.service';
 import { Usager } from '../_model/usager.model';
-import { UsagerService } from '../_service/usager.service';
+import { UsagerService } from '../_service/usager/usager.service';
 import { CommonModule } from '@angular/common';
 
 @Component({

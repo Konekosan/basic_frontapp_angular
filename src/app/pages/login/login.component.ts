@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../_module/Material.module';
+import { MaterialModule } from '../../_module/Material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { LoginService } from './login.service';
-import { MessageService } from '../_service/message.service';
-import { UsagerService } from '../_service/usager.service';
+import { LoginService } from '../../_service/login/login.service';
+import { MessageService } from '../../_service/message.service';
+import { UsagerService } from '../../_service/usager/usager.service';
 
 @Component({
   selector: 'app-login',

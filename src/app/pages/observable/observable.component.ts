@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy  } from '@angular/core';
-import { ObservableService } from '../_service/observable/observable.service';
+import { ObservableService } from '../../_service/observable/observable.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
