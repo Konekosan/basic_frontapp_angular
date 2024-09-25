@@ -1,10 +1,10 @@
 <mat-drawer-container>
     <mat-drawer opened="true" mode="side">
     <mat-nav-list>
-        <mat-list-item>
+        <!-- <mat-list-item>
             <button *ngIf="!isLogged" routerLink="login" mat-button>Connexion</button>
             <button *ngIf="isLogged" routerLink="dashboard/1" mat-button>Dashboard</button>
-        </mat-list-item>
+        </mat-list-item> -->
         <mat-list-item *ngFor="let route of routes">
             <button [routerLink]="route.path" mat-button>{{ route.label }}</button>
         </mat-list-item>

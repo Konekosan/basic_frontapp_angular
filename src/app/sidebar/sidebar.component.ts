@@ -22,13 +22,14 @@ export class SidebarComponent implements OnInit{
   }
 
   ngOnInit(){
-    if(this.loginService.isLoggedIn()){
-      this.isLogged = true;
-    }
+    this.loginService.loggedIn$.subscribe(isLogged => {
+      this.isLogged = isLogged;
+    });
   }
 
   routes = [
     { label: 'Home', path: '' },
+    { label: 'Admin', path: 'admin' },
     { label: 'Observable', path: 'observable' },
     { label: 'Usager', path: 'usager' },
     { label: 'Poo training', path: 'poo'}

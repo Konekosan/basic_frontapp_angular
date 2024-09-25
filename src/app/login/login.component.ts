@@ -37,15 +37,18 @@ export class LoginComponent implements OnInit{
 
   onSubmit() {
     const loginForm = this.form.value;
-    this.loginService.login(loginForm.username, loginForm.password).subscribe(
-      response => {
-        this.token = response.token;
-        const currentUser = response.user;
-        this.router.navigate(['/dashboard', currentUser.id]);
-    },
-    error => {
-      console.log('Login failed', error);
-    });
+
+    if (loginForm.username && loginForm.password) {
+      this.loginService.login(loginForm.username, loginForm.password).subscribe(
+        response => {
+          this.token = response.token;
+          const currentUser = response.user;
+          this.router.navigate(['/dashboard', currentUser.id]);
+      },
+      error => {
+        console.log('Login failed', error);
+      });
+    }
   }
 
   isFieldInvalid(param: string) {

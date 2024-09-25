@@ -22,8 +22,7 @@ export class DashboardComponent implements OnInit{
               private router: Router,
               private route: ActivatedRoute,
               private usagerService: UsagerService
-             ) {
-  }
+             ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -40,7 +39,7 @@ export class DashboardComponent implements OnInit{
 
   logout() {
     this.loginService.logout();
-    this.router.navigate(['/login']);
+    this.router.navigate(['']);
   }
 
 }

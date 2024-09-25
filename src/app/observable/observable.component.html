@@ -2,4 +2,9 @@
 <div class="observable-container">
     <h1>Observable</h1>
     <p>Voici une page pour tester les obseravable</p>
+    <ul>
+        <li *ngFor="let name of names$ | async">
+          {{ name }}
+        </li>
+      </ul>
 </div>

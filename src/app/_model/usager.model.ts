@@ -1,3 +1,5 @@
+import { Role } from "./role.model";
+
 export class Usager {
     id: number;
     nom: string;
@@ -6,6 +8,7 @@ export class Usager {
     username: string;
     hashed_pwd: string;
     is_active: boolean;
+    roles: Role[];
 
     constructor(){}
 

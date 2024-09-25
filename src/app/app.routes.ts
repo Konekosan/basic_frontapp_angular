@@ -6,15 +6,16 @@ import { AuthGuard } from './login/auth.guard';
 import { ObservableComponent } from './observable/observable.component';
 import { UsagerComponent } from './usager/usager.component';
 import { PooComponent } from './POO/poo/poo.component';
+import { AdminComponent } from './admin/admin.component';
 
 export const routes: Routes = [
     {   path: '',
-        component: HomeComponent
-    },
-    {
-        path: 'login',
         component: LoginComponent
     },
+    // {
+    //     path: 'login',
+    //     component: LoginComponent
+    // },
     {
         path: 'dashboard/:id',
         component: DashboardComponent,
@@ -22,7 +23,7 @@ export const routes: Routes = [
     },
     {
         path: 'observable',
-        component: ObservableComponent
+        loadComponent: () => import('./observable/observable.component').then(m => m.ObservableComponent)
     },
     {
         path: 'usager',
@@ -31,5 +32,9 @@ export const routes: Routes = [
     {
         path: 'poo',
         component: PooComponent
+    },
+    {
+        path: 'admin',
+        component: AdminComponent
     }
 ];

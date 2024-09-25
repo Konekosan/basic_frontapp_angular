@@ -1,0 +1,17 @@
+<div class="margin-main"></div>
+<div class="dashboard-container">
+    <h1>Bienvenue sur votre page Admin</h1>
+    <p>Vous êtes maintenant connecté.</p>
+
+    <h4>Roles</h4>
+    <mat-form-field>
+    <mat-label>Roles</mat-label>
+    <mat-select [(ngModel)]="selectedRole">
+        @for (role of roles; track role) {
+        <mat-option [value]="role.id">{{role.nom}}</mat-option>
+        }
+    </mat-select>
+    </mat-form-field>
+
+    <p>Role sélectionné : {{ selectedRole }}</p>
+</div>
