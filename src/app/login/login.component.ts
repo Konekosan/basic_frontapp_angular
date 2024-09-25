@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { MessageService } from '../_service/message.service';
+import { UsagerService } from '../_service/usager.service';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,9 @@ export class LoginComponent implements OnInit{
 
   constructor(private loginService: LoginService, 
               private router: Router,
-              private messageService: MessageService) {}
+              private messageService: MessageService,
+              private usagerService: UsagerService
+             ) {}
 
   ngOnInit() {
     this.errorMessage = this.messageService.getMessage();
@@ -43,7 +46,8 @@ export class LoginComponent implements OnInit{
         response => {
           this.token = response.token;
           const currentUser = response.user;
-          this.router.navigate(['/dashboard', currentUser.id]);
+          this.usagerService.setUserData(currentUser);
+          this.router.navigate(['/dashboard']);//, { queryParams: { id: currentUser.id, nom: currentUser.nom } }
       },
       error => {
         console.log('Login failed', error);

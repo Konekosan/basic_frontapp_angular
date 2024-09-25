@@ -15,7 +15,17 @@ export class UsagerService {
     Accept: 'application/json',
   }
 
+  usager: Usager;
+
   constructor(private http: HttpClient) { }
+
+  setUserData(usager: Usager) {
+    this.usager = usager;
+  }
+
+  getUserData() {
+    return this.usager;
+  }
 
   fetchAllUsager(): Observable<Usager[]> {
     return this.http.get<Usager[]>(this.usagersUrl)

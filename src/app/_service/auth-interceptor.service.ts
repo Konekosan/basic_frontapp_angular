@@ -26,7 +26,7 @@ export const authInterceptor: HttpInterceptorFn = (
   if (typeof window !== 'undefined' && window.localStorage) {
     const token = localStorage.getItem('token');
   }
-  console.log('salut');
+  //console.log('salut');
   if (token != '') {
     request = request.clone({
       setHeaders: {

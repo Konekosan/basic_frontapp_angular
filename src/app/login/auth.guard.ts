@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     } else {
       this.messageService.setMessage('Vous devez être connecté pour accéder à cette page.');
-      this.router.navigate(['']);
+      this.router.navigate(['/unauthorized']);
       return false;
     }
   }

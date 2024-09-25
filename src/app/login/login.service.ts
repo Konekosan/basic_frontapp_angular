@@ -23,6 +23,7 @@ export class LoginService {
   usagerInfo: any;
   private userInfoSource = new BehaviorSubject<any>(null);
   currentUserInfo = this.userInfoSource.asObservable();
+
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   public loggedIn$ = this.loggedInSubject.asObservable();
 

@@ -3,5 +3,10 @@
     <button mat-icon-button>
         <mat-icon>menu</mat-icon>
     </button>
-    <button class="title-menu" routerLink="" mat-button>Angular</button>
+    <h1>ANGULAR BASIC APP</h1>
+    <span class="fill-remaining-space"></span>
+    <button *ngIf="usager" mat-button><mat-icon>person</mat-icon>{{usager.nom}} {{usager.prenom}}</button>
+    <button mat-button (click)="logout()"><mat-icon>logout</mat-icon>Deconnexion</button>
 </mat-toolbar>
+<app-sidebar></app-sidebar>
+<!-- <router-outlet></router-outlet> -->
