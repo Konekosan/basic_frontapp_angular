@@ -34,7 +34,7 @@ export class UsagerComponent implements OnInit {
 
   loadUsager(): void {
     this.usagerService.fetchAllUsager().subscribe((data: any) => {
-      this.usagerData = data[0];
+      this.usagerData = data.users;
     });
   }
 

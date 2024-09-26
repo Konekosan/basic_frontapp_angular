@@ -31,7 +31,6 @@ export class LoginService {
       if (this.token) {
         this.getCurrentUser(this.token).subscribe(
           reponse => {
-            //console.log(reponse);
           }
         );
       }
@@ -66,7 +65,7 @@ export class LoginService {
 
   refreshToken(): Observable<any> {
     const refreshToken = localStorage.getItem('refreshToken');
-    return this.httpClient.post<any>(this.refreshTokenUrl, { refreshToken });
+    return this.httpClient.post<any>(this.refreshTokenUrl, {refresh_token:refreshToken});
   }
 
   isLoggedIn(): boolean {

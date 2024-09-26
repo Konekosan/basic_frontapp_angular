@@ -1,20 +1,29 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-poo',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './poo.component.html',
   styleUrl: './poo.component.css'
 })
 export class PooComponent {
   
-  constructor(){
-    const car = new Car(1);
-    car.drive();
+  rubriques = [
+    'Classes/Objets',
+    'Encapsulation',
+    'Héritage',
+    'Polymorphisme',
+    'Abstraction'
+  ];
 
-    const child = new Child();
-    child.printChildProperties()
+  constructor(){
+    // const car = new Car(1);
+    // car.drive();
+
+    // const child = new Child();
+    // child.printChildProperties()
   }
 }
 
