@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuard } from './pages/login/auth.guard';
-import { ObservableComponent } from './pages/observable/observable.component';
 import { UsagerComponent } from './pages/usager/usager.component';
 import { PooComponent } from './pages/POO/poo/poo.component';
 import { AdminComponent } from './pages/admin/admin.component';
