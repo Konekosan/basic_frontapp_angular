@@ -1,5 +1,4 @@
 <div class="signin-content">
-
     <mat-card>
       <mat-card-content>
         <div *ngIf="errorMessage" class="error-message">
@@ -21,7 +20,7 @@
             </mat-error>
           </mat-form-field>
           <button mat-raised-button class="login-button" color="primary">Connexion</button>
-          <button mat-raised-button color="primary">S'inscrire</button>
+          <button mat-raised-button routerLink="/subscribe" color="primary">S'inscrire</button>
         </form>
       </mat-card-content>
     </mat-card>

@@ -94,6 +94,7 @@ export class LoginService {
   logout() {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.removeItem('authToken');
+      localStorage.removeItem('refreshToken');
       this.loggedInSubject.next(false);
     }
   }

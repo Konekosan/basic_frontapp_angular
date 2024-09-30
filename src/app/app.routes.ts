@@ -7,6 +7,7 @@ import { PooComponent } from './pages/POO/poo/poo.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AppHeaderComponent } from './pages/app-header/app-header.component';
 import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import { SubscribeComponent } from './pages/subscribe/subscribe.component';
 
 export const routes: Routes = [
     {   
@@ -44,6 +45,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./pages/observable/observable.component').then(m => m.ObservableComponent)
             },
         ]
+    },
+    {
+        path: 'subscribe',
+        component: SubscribeComponent
     },
     {
         path: 'unauthorized',

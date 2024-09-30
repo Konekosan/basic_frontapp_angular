@@ -11,6 +11,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
   private urlBack: string = 'http://localhost:8000/login/refresh-token';
+  //private logout: string = 'http://localhost:8000/login/logout';
 
   constructor(private httpClient: HttpClient) {}
 

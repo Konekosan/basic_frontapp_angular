@@ -3,7 +3,7 @@ import { MaterialModule } from '../../_module/Material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../_service/login/login.service';
 import { MessageService } from '../../_service/message.service';
 import { UsagerService } from '../../_service/usager/usager.service';
@@ -13,7 +13,8 @@ import { UsagerService } from '../../_service/usager/usager.service';
   standalone: true,
   imports: [MaterialModule,
             ReactiveFormsModule, 
-            CommonModule
+            CommonModule,
+            RouterLink
           ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'

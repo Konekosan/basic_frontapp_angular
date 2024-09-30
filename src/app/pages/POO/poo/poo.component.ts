@@ -19,67 +19,41 @@ export class PooComponent {
   ];
 
   constructor(){
-    // const car = new Car(1);
-    // car.drive();
-
-    // const child = new Child();
-    // child.printChildProperties()
+    // const chiffre: number = 1;
+    // const animal: Animaux = new Animaux('girafe', 'grand', 'F');
+  
   }
+
+
 }
 
-  // encapsulation private public
-  class Person {
-    private name: string;
-    private age: number;
+class Animaux {
+  nom: string;
+  race: string;
+  sexe: string;
+  private couleur: string = 'rouge';
 
-    constructor(name: string, age: number) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public getName(): string {
-        return this.name;
-    }
-
-    public setName(newName: string): void {
-        this.name = newName;
-    }
+  constructor(parametre_nom: string, race: string, sexe: string){
+    this.nom = parametre_nom;
+    this.race = race;
+    this.sexe = sexe;
+    console.log(this.couleur);
+    console.log(this.race);
   }
 
-  //interface
-  interface Drivable {
-    speed: number;
-    drive(): void;
+  faitBruit() {
+    console.log(`${this.nom} makes a sound.`);
   }
 
-  // Class implements interface
-  class Car implements Drivable {
-    speed: number;
-    
-    constructor(speed: number) {
-        this.speed = speed;
-    }
+}
 
-    drive(): void {
-        console.log(`La voiture roule à ${this.speed} km/h.`);
-    }
+class Chat extends Animaux{
+  constructor(public parametre_nom: string, race: string, sexe: string) {
+    super(parametre_nom, race, sexe); // Appel au constructeur de la classe parente
   }
 
-  
-  class Parent {
-    public publicProperty = 'public';
-    private privateProperty = 'private';
-    protected protectedProperty = 'protected';
-    
-    public printProperties(): void {
-        console.log(this.publicProperty, this.privateProperty, this.protectedProperty);
-    }
+  miaule() {
+    console.log(`${this.parametre_nom} barks.`);
   }
 
-  class Child extends Parent {
-    public printChildProperties(): void {
-        console.log(this.publicProperty);
-        //console.log(this.privateProperty);
-        console.log(this.protectedProperty);
-    }
-  }
+}

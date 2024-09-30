@@ -1,0 +1,5 @@
+<mat-toolbar [ngClass]="toolbarClass" *ngIf="message">
+    <span>{{ message }}</span>
+    <span class="spacer"></span>
+    <button mat-button (click)="closeBar()">Fermer</button>
+</mat-toolbar>

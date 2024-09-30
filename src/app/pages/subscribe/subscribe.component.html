@@ -1,0 +1,48 @@
+<div class="signup-container">
+    <mat-card class="signup-card">
+      <h1>Inscription</h1>
+      <form [formGroup]="subscribeForm">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nom</mat-label>
+          <input matInput placeholder="Nom" formControlName="nom" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Prenom</mat-label>
+          <input matInput placeholder="Prenom" formControlName="prenom" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Date de naissance</mat-label>
+          <input matInput placeholder="Date naissance DD/MM/YYYY" formControlName="date_naissance" required />
+        </mat-form-field>
+        <p *ngIf="showErrorDateFormat" style="color: red;">
+          Le format doit etre DD/MM/YYYY.
+        </p>  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Identifiant / Pseudo</mat-label>
+          <input matInput placeholder="Identifiant" formControlName="login" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput type="password" formControlName="password" placeholder="Mot de passe" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Confirmation de Mot de passe</mat-label>
+          <input matInput type="password" formControlName="confirm_password" placeholder="Mot de passe" required />
+        </mat-form-field>
+        <p *ngIf="showErrorMatchPassword" style="color: red;">
+          Le formulaire est invalide ou les mots de passe ne correspondent pas.
+        </p>
+        <button mat-raised-button class="full-width" (click)="onSubmit()">
+          S'inscrire
+        </button>
+        <button mat-raised-button routerLink="/login" class="full-width">
+            Connexion
+        </button>
+
+      </form>
+    </mat-card>
+  </div>

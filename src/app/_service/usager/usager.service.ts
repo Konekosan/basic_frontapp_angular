@@ -11,6 +11,7 @@ export class UsagerService {
   baseUrl : string = 'http://localhost:8000/';
   usagersUrl : string = this.baseUrl + 'usager/';
   createUsager : string = this.usagersUrl + 'create';
+  subscribeUsager: string = this.usagersUrl + 'subscribe';
   header_node = {
     Accept: 'application/json',
   }
@@ -25,6 +26,10 @@ export class UsagerService {
 
   getUserData() {
     return this.usager;
+  }
+
+  subscribeUSager(data: any): Observable<Usager[]> {
+    return this.http.post<Usager[]>(this.subscribeUsager, data, { headers: this.header_node })
   }
 
   fetchAllUsager(): Observable<Usager[]> {

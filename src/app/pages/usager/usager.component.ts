@@ -6,11 +6,15 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddUsagerModaleComponent } from '../../modale/add-usager-modale/add-usager-modale.component';
 import { ConfirmationModaleComponent } from '../../modale/confirmation-modale/confirmation-modale.component';
 import { UsagerEvent, Usager } from '../../_model/usager.model';
+import { MessageBarComponent } from '../../shared/message-bar/message-bar.component';
+import { MessageBarService } from '../../_service/message-bar/message-bar.service';
+import { MESSAGES } from '../../shared/message';
 
 @Component({
   selector: 'app-usager',
   standalone: true,
-  imports: [MaterialModule, CommonModule, MatDialogModule, AddUsagerModaleComponent],
+  imports: [MaterialModule, CommonModule, MatDialogModule, 
+            AddUsagerModaleComponent, MessageBarComponent],
   templateUrl: './usager.component.html',
   styleUrl: './usager.component.css'
 })
@@ -26,7 +30,9 @@ export class UsagerComponent implements OnInit {
   readonly login = model('');
   readonly password = model('');
 
-  constructor(private usagerService: UsagerService){}
+  constructor(private usagerService: UsagerService,
+              private messageBarService: MessageBarService
+             ){}
 
   ngOnInit(): void {
     this.loadUsager();
@@ -54,11 +60,12 @@ export class UsagerComponent implements OnInit {
       if (result) {
         this.usagerData.push(result);
         this.usagerData = [...this.usagerData];
+        this.messageBarService.showMessage(MESSAGES.SUCCESS.USAGER_CREATED, 'success');
       }
     });
   }
 
-  deleteBoard(event: UsagerEvent): void {
+  deleteUsager(event: UsagerEvent): void {
     const usagerId = event.id;
     const dialogRef = this.dialog.open(ConfirmationModaleComponent, {
       data: 'delete'
@@ -69,6 +76,7 @@ export class UsagerComponent implements OnInit {
         this.usagerService.deleteUsagerById(usagerId).subscribe(
         response => {
           this.usagerData = this.usagerData.filter((usager: any) => usager.id !== usagerId);
+          this.messageBarService.showMessage(MESSAGES.SUCCESS.USAGER_DELETED, 'success');
         });
       }
     });
