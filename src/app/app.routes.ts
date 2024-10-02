@@ -6,8 +6,9 @@ import { UsagerComponent } from './pages/usager/usager.component';
 import { PooComponent } from './pages/POO/poo/poo.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AppHeaderComponent } from './pages/app-header/app-header.component';
-import { UnauthorizedComponent } from './pages/unauthorized/unauthorized.component';
+import { UnauthorizedComponent } from './pages/error/unauthorized/unauthorized.component';
 import { SubscribeComponent } from './pages/subscribe/subscribe.component';
+import { NoexistsComponent } from './pages/error/noexists/noexists.component';
 
 export const routes: Routes = [
     {   
@@ -53,5 +54,9 @@ export const routes: Routes = [
     {
         path: 'unauthorized',
         component: UnauthorizedComponent
+    },
+    {
+        path: '**',
+        component: NoexistsComponent
     },
 ];

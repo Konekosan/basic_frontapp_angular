@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { switchMap, tap, map } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { switchMap, tap, map, catchError } from 'rxjs/operators';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -46,11 +47,12 @@ export class LoginService {
     dataLogin.set('scope','');
     dataLogin.set('client_id','');
     dataLogin.set('client_secret','');
-
+    
     return this.httpClient.post<any>(this.urlLogin, dataLogin.toString(), { headers: this.headers })
     .pipe(tap(response => {
         this.setToken(response.access_token, response.refresh_token);
-      }),
+      }
+    ),
       switchMap(response =>
         this.getCurrentUser(response.access_token).pipe(
           tap(currentUser => {
@@ -59,7 +61,10 @@ export class LoginService {
           }),
           map(currentUser => ({ token: response.access_token, user: currentUser }))
         )
-      )
+      ),
+      catchError((error: any) => {
+        return throwError(() => error); 
+      })
     );
   }
 

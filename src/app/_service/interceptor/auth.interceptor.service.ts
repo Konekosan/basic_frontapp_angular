@@ -28,7 +28,7 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     return next.handle(req).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
+        if (error.status === 401 && error.error.detail.code=='token_expired') {
           return this.handle401Error(req, next);
         } else {
           return throwError(error);
@@ -75,7 +75,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         );
       } else {
         //this.loginService.logout();
-        return throwError('No refresh token available');
+        return throwError('Fail');
       }
     } else {
       // Si autre requête de rafraîchissement en cours

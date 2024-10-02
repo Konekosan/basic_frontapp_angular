@@ -7,6 +7,9 @@ import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../_service/login/login.service';
 import { MessageService } from '../../_service/message.service';
 import { UsagerService } from '../../_service/usager/usager.service';
+import { MessageBarService } from '../../_service/message-bar/message-bar.service';
+import { MESSAGES } from '../../shared/message';
+import { MessageBarComponent } from '../../shared/message-bar/message-bar.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +17,8 @@ import { UsagerService } from '../../_service/usager/usager.service';
   imports: [MaterialModule,
             ReactiveFormsModule, 
             CommonModule,
-            RouterLink
+            RouterLink,
+            MessageBarComponent
           ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -32,8 +36,9 @@ export class LoginComponent implements OnInit{
   constructor(private loginService: LoginService, 
               private router: Router,
               private messageService: MessageService,
-              private usagerService: UsagerService
-             ) {}
+              private usagerService: UsagerService,
+              private messageBarService: MessageBarService
+             ){}
 
   ngOnInit() {
     this.errorMessage = this.messageService.getMessage();
@@ -44,15 +49,20 @@ export class LoginComponent implements OnInit{
 
     if (loginForm.username && loginForm.password) {
       this.loginService.login(loginForm.username, loginForm.password).subscribe(
-        response => {
+        (response: any) => {
           this.token = response.token;
           const currentUser = response.user;
           this.usagerService.setUserData(currentUser);
-          this.router.navigate(['/dashboard']);//, { queryParams: { id: currentUser.id, nom: currentUser.nom } }
-      },
-      error => {
-        console.log('Login failed', error);
-      });
+          this.router.navigate(['/dashboard']);
+        },
+        error => {
+          if (error.error.detail.code == 'invalid_credentials'){
+            this.messageBarService.showMessage(MESSAGES.ERROR.ERROR_LOGIN,'error');
+          } else {
+            this.messageBarService.showMessage(MESSAGES.ERROR.ERROR_GENERIC,'error');
+          }
+        }
+      );
     }
   }
 
