@@ -20,11 +20,15 @@
                  placeholder="Date naissance DD/MM/YYYY" 
                  formControlName="date_naissance" 
                  required 
+                 maxlength="10"
                  (input)="onDateInput($event)"
           />
         </mat-form-field>
         <p *ngIf="showErrorDateFormat" style="color: red;">
           Le format doit etre DD/MM/YYYY.
+        </p>
+        <p *ngIf="showErrorDateValue" style="color: red;">
+          Erreur dans le format de la date
         </p>  
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Identifiant / Pseudo</mat-label>
@@ -43,7 +47,7 @@
         <p *ngIf="showErrorMatchPassword" style="color: red;">
           Le formulaire est invalide ou les mots de passe ne correspondent pas.
         </p>
-        <button mat-raised-button class="full-width" (click)="onSubmit()">
+        <button type="submit" mat-raised-button class="full-width" (click)="onSubmit()">
           S'inscrire
         </button>
         <button mat-raised-button routerLink="/login" class="full-width">

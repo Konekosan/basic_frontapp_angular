@@ -1,0 +1,12 @@
+.loading-container {
+    position: fixed; /* Position fixe */
+    top: 0; /* En haut de la page */
+    left: 0; /* À gauche de la page */
+    width: 100%; /* Prend toute la largeur */
+    height: 100%; /* Prend toute la hauteur */
+    display: flex; /* Utiliser flex pour centrer */
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+    background-color: rgba(255, 255, 255, 0.8); /* Fond semi-transparent */
+    z-index: 1000; /* Au-dessus de tout le contenu */
+}

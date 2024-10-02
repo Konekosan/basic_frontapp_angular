@@ -11,7 +11,6 @@ export class AuthInterceptorService implements HttpInterceptor {
   private isRefreshing = false;
   private refreshTokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
   private urlBack: string = 'http://localhost:8000/login/refresh-token';
-  //private logout: string = 'http://localhost:8000/login/logout';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -50,7 +49,6 @@ export class AuthInterceptorService implements HttpInterceptor {
       if (refreshToken) {
         return this.httpClient.post<any>(this.urlBack, data).pipe(
           switchMap((tokenResponse: any) => {
-            console.log(tokenResponse);
             this.isRefreshing = false;
 
             if (tokenResponse && tokenResponse.access_token) {

@@ -6,7 +6,9 @@ import { MaterialModule } from './_module/Material.module';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MessageBarComponent, MaterialModule],
+  imports: [RouterOutlet, MessageBarComponent, 
+    MaterialModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

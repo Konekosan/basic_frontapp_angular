@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../../_module/Material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, ReactiveFormsModule, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -25,11 +25,16 @@ import { MessageBarComponent } from '../../shared/message-bar/message-bar.compon
 })
 export class LoginComponent implements OnInit{
   form: FormGroup = new FormGroup({
-    username: new FormControl('', []),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+      this.noSpecialCharactersValidator()
+    ]),
+    password: new FormControl('', [
+      Validators.required, 
+      Validators.minLength(5)
+    ])
   });
-  username: string = '';
-  password: string = '';
   errorMessage: string = '';
   token: string | null = null;
 
@@ -45,10 +50,11 @@ export class LoginComponent implements OnInit{
   }
 
   onSubmit() {
-    const loginForm = this.form.value;
+    const username = this.form.get('username')?.value;
+    const password = this.form.get('password')?.value;
 
-    if (loginForm.username && loginForm.password) {
-      this.loginService.login(loginForm.username, loginForm.password).subscribe(
+    if (username && password && this.form.valid) {
+      this.loginService.login(username, password).subscribe(
         (response: any) => {
           this.token = response.token;
           const currentUser = response.user;
@@ -64,6 +70,13 @@ export class LoginComponent implements OnInit{
         }
       );
     }
+  }
+
+  noSpecialCharactersValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const forbidden = /[<>;'"\\\/]/.test(control.value);
+      return forbidden ? { 'forbiddenCharacters': { value: control.value } } : null;
+    };
   }
 
   isFieldInvalid(param: string) {
